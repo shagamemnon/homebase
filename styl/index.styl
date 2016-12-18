@@ -1,0 +1,77 @@
+body
+  min-height: 1000px
+  background: $backgroundColor
+  overflow-y: visible
+section.main
+  padding: 25px
+  background: $backgroundColor
+  position: relative
+  padding-top: 100px
+article.index
+  background: $thumbnailColor
+  height: 238px
+  max-height: 238px
+  col(1/3)
+  overflow-y: hidden
+  display: block
+  position: relative
+  margin-bottom: 25px
+  transition: 100ms
+  cursor: pointer
+  &.is-inactive
+    transition: 100ms
+    display: none
+    opacity: 0
+  &:first-child
+    col(1/2)
+    height: 500px
+    max-height: 500px
+    clearfix()
+    h1
+      shift(1/4)
+  &:nth-of-type(2)
+    col(1/2)
+    float: right
+    h1, p
+      text-align: right
+      float: right
+    h1
+      shift(1/4)
+  &:nth-of-type(3), &:nth-of-type(4)
+    col(1/4)
+  &:nth-of-type(4)
+    float: right
+  &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4)
+    margin-right: 0
+    clearfix()
+  
+  header.postheader
+    top: 50%
+    display: flex
+    position: absolute
+    transform: translateY(-40%)
+  
+  .tags.hidden
+    display: none
+  
+  h1
+    h2()
+    padding-left: 32px
+    padding-right: 20px
+    display: block
+    line-height 1.2
+    max-width: 400px
+    float: right
+    
+  p
+    p()
+    margin-top: $marginBottom
+    display: block
+    overflow: hidden
+    display: -webkit-box
+    -webkit-line-clamp: 3
+    -webkit-box-orient: vertical
+    max-width: 300px
+    text-transform: none
+    font-weight: 300
+  

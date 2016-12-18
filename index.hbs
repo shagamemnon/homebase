@@ -1,0 +1,14 @@
+
+{{!< default}}
+{{> navigation}}
+<section role="main" class="main">{{#foreach posts}}
+  <article role="article" itemscope="itemscope" class="index">
+    <header class="postheader">
+      <h1 itemprop="headline">
+        <a href="{{{url}}}" rel="bookmark">{{title}}</a>
+        {{content}}
+        <div style="background-image: url("{{image}}""></div>
+      </h1>
+    </header>{{#if tags}}<div class ="tags hidden">{{tags separator=" | "}}</div>{{/if}}
+  </article>{{/foreach}}
+</section>{{> footer}}

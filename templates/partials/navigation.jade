@@ -1,0 +1,41 @@
+nav
+  | <div class="nav" {{#if @blog.cover}}style="background-image:url({{@blog.cover}})"{{/if}}></div>
+  | {{#if @blog.logo}}<a class="logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Logo" /></a>{{/if}}
+  
+  h3.nav-title
+    a.nav-close(href="#")
+      span.hidden
+
+  h1.blog-title
+    | {{@blog.title}}
+
+  ul
+    | {{#foreach navigation}}<li class="nav-{{slug}}{{#if current}} nav-current{{/if}}" role="presentation"><a href="{{url absolute="true"}}">{{label}}</a></li>{{/foreach}}
+    li(role="presentation") Projects
+    li(role="presentation") Resume
+    li(role="presentation") Find Me
+    li(role="presentation") Blog
+      .filterMenu.
+        <br>
+        <div id="all"><a href="#">View All</a></div>
+        {{#foreach posts}}
+          {{#if tags}}<div class="tags">{{tags}}</div>{{/if}}
+        {{/foreach}}
+
+      include ./menu_icon
+
+span(class="nav-cover")
+
+//- h2.blog-description.
+//-   {{@blog.description}}
+
+//- my-fancy-nav-wrapper.
+//-   <ul class="nav">
+//-     <!-- Loop through the navigation items -->
+//-     {{#foreach navigation}}
+//-     <li class="nav-{{slug}}{{#if current}} nav-current{{/if}}">
+//-     <a href="{{url absolute="true"}}">{{label}}</a>
+//-     </li>
+//-     {{/foreach}}
+//-     <!-- End the loop -->
+//-   </ul>

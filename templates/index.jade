@@ -1,0 +1,18 @@
+{{!< default}}
+{{> navigation}}
+
+section.main(role="main")
+  | {{#foreach posts}}
+  article.index(role="article", itemscope)
+    header.postheader
+      h1(itemprop="headline")
+        | <a href="{{{url}}}" rel="bookmark">{{title}}</a>
+  
+        | {{content}}
+        | <div style="background-image: url("{{image}}""></div>
+    
+    | {{#if tags}}<div class ="tags hidden">{{tags separator=" | "}}</div>{{/if}}
+  
+  | {{/foreach}}
+
+{{> footer}}

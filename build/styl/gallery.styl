@@ -1,0 +1,74 @@
+.base-gallery
+    display: inline-flex
+    transform: scale(.7)
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    z-index: 1000
+    width: 100vw
+    visibility: hidden
+    transition: 0ms
+    background: transparent
+    height: 100%
+    &.is-visible
+        visibility: visible !important
+        transform: scale(1)
+        background: rgba(255,255,255,0.94)
+        transition: 200ms
+        cursor: zoom-out
+
+.arrow
+    background-size: cover
+    height: 36px
+    width: 36px
+    position: fixed
+    background-repeat: no-repeat
+    transform: translateY(-50%)
+    top: 50%
+    cursor: pointer
+    z-index: 250001
+    display: none
+    background-color: rgba(255,255,255,0.65)
+    background-size: 70%
+    background-position: center
+    border-radius: 100%
+
+    &.is-visible
+        display: block
+
+.arrow-left
+    left: 0.75%
+    background-image: url(/assets/img/arrow-left.png)
+
+
+.arrow-right
+    background-image: url(/assets/img/arrow-right.png)
+    right: 0.75%
+
+.gallery-item
+    max-width: 100vw
+    max-height: 100vh
+    position: inherit
+    padding-left: 3vw
+    padding-right: 3vw
+    margin: auto
+    z-index: 0
+    opacity: 0
+    transform: translateY(-50%)
+    top: 50%
+    overflow-x: scroll
+
+    figcaption
+        padding-top: 12px
+        padding-bottom: 12px
+        & > *
+            display: block
+            padding: 0
+            margin: 0
+
+    &.is-active
+        z-index: 250000 !important
+        display: block
+        opacity: 1

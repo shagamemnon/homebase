@@ -1,0 +1,27 @@
+| {{#get "posts" limit="5" filter="page:false" include="tags" order="updated_at desc"}}
+#flapper-menu
+    .flapper-container
+        ul#projects-dropdown
+            .dropdown.wf-loading
+                li
+                    span
+                        h4 Frank Taylor
+                        p Projects
+                | {{#foreach posts}}
+                li.project
+                    a.project-link.box-link(href="{{{url}}}", class="post-link") {{title}}
+                | {{/foreach}}
+        ul#resume-dropdown
+            .dropdown.wf-loading
+                li
+                    span
+                        h4 Frank Taylor
+                        p Resume
+                li.project
+                    a(href="https://s3-us-west-1.amazonaws.com/frank-io/CV_FrankTaylor.pdf", target="_blank") View PDF
+                li.project
+                    a(href="https://s3-us-west-1.amazonaws.com/frank-io/CV_FrankTaylor.pdf") Print
+
+.box-container.is-visible.
+    {{#foreach posts}}<a href='{{{url}}}' class="box box-link"><h2 class="box-title">{{title}}</h5><p class="box-desc">{{meta_description}}</p></a>{{/foreach}}
+| {{/get}}

@@ -1,0 +1,27 @@
+.contact-section
+  include ./../svg/close
+//- #successMessage
+//-   h1(style="color:#84c99c") Submission successful!
+//- .verticalLine
+form#contactForm(action="https://formspree.io/frank@franktaylor.io", method="POST")
+  .inputRow
+    .email
+      input#email(name='email', type='text')
+      label(for="email") Email
+    .name
+      input#name(name='name', type='text')
+      label(for="name") First Name
+  .inputRow
+    .company
+      input#company(name='company', type='text')
+      label(for="company") Organization
+    .subject
+      input#subject(name='subject', type='text')
+      label(for="subject") Subject
+  .inputRow
+    .message
+      input#message(name='message')
+      label(for="message") Message
+      input(type='text', name='_gotcha', style='display:none')
+  .inputRow
+    input#request.submit-button(type="submit", value="GET IN TOUCH ")

@@ -1,0 +1,23 @@
+{{#get "posts" limit="5" filter="page:false" include="tags" order="updated_at desc"}}
+<div id="flapper-menu">
+  <div class="flapper-container">
+    <ul id="projects-dropdown">
+      <div class="dropdown wf-loading">
+        <li><span>
+            <h4>Frank Taylor</h4>
+            <p>Projects</p></span></li>{{#foreach posts}}
+        <li class="project"><a href="{{{url}}}" class="project-link box-link post-link">{{title}}</a></li>{{/foreach}}
+      </div>
+    </ul>
+    <ul id="resume-dropdown">
+      <div class="dropdown wf-loading">
+        <li><span>
+            <h4>Frank Taylor</h4>
+            <p>Resume</p></span></li>
+        <li class="project"><a href="https://s3-us-west-1.amazonaws.com/frank-io/CV_FrankTaylor.pdf" target="_blank">View PDF</a></li>
+        <li class="project"><a href="https://s3-us-west-1.amazonaws.com/frank-io/CV_FrankTaylor.pdf">Print</a></li>
+      </div>
+    </ul>
+  </div>
+</div>
+<div class="box-container is-visible">{{#foreach posts}}<a href='{{{url}}}' class="box box-link"><h2 class="box-title">{{title}}</h5><p class="box-desc">{{meta_description}}</p></a>{{/foreach}}</div>{{/get}}

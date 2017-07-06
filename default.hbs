@@ -1,17 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
   <head>
-    <meta charset="utf-16">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{meta_title}}</title>
     <meta name="description" content="{{meta_description}}">
+    <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/styles.min.css">
-    <script src="/assets/js/libs/modernizr.js"></script>
-    <link rel="shortcut icon" href="/assets/images/favicon.ico">{{ghost_head}}
+    <link rel="shortcut icon" href="{{asset 'img/favicon.ico'}}">
+    <link rel="stylesheet" href="{{asset 'css/main.min.css'}}">
+    <script defer src="{{asset 'js/libs/jquery.min.js'}}"></script>
+    <script defer src="{{asset 'js/functions.min.js'}}"></script>
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'xlc5yjz',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
+    <noscript>
+      <style>
+        #baseLoad.pageCompiling {display: none}
+        .back-icon {display: none !important}
+        .wf-loading {opacity: 1 !important}
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,700|Roboto+Slab:300,400,700")
+      </style>
+    </noscript>{{ghost_head}}
   </head>
-  <body class="{{body_class}}">{{{body}}}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script>if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='/assets/js/_libs/jquery-2.2.4.min.js' type='text/javascript'%3E%3C/script%3E")); }</script>
-    <script src="/assets/js/functions.js"></script>
+  <body data-visit="1" class="{{body_class}}">
+    <div class="index-container">
+      {{> loop}}
+      {{navigation}}
+      {{{body}}}
+      {{> footer}}
+    </div>{{> menu/contact}}
   </body>
 </html>

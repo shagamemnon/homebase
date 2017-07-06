@@ -1,0 +1,161 @@
+#mobile-contact
+  display: none
+
+#closeModal
+  display: none
+
+.contact-section
+  position: fixed
+  width: 100%
+  height: 100%
+  max-width: 100%
+  background: $backgroundColor
+  border-bottom: 1px solid #bbb
+  bottom: -750px
+  top: 0
+  border-top: 60px solid transparent
+  margin-top: 0px
+  left: 0
+  right: 0
+  padding: 0px
+  visibility: hidden
+  z-index: -1
+  transition: 20ms
+  opacity: 0.96
+
+  &.is-active
+    z-index: 200
+    visibility: visible
+
+    & + form#contactForm
+      visibility: visible
+      transform: scale(1)
+      top: 0px
+      bottom: 0
+      visibility: visible
+      transition: 160ms
+      animation: fade-in-pulse-08 .3s forwards cubic-bezier(.8,.02,.45,.91)
+
+  .verticalLine
+    margin-top: 0
+    border-color: $orange
+    h3
+      color: #333
+
+  h1
+    color: #222
+    padding-top: 0px
+    padding-bottom: 75px
+
+  & + form#contactForm
+    width: $formWidth
+    max-height: 350px
+    min-height: 350px
+    background: white
+    box-shadow: 0px 14px 29px 0px rgba(0, 0, 0, 0.09)
+    padding: 40px 0px 40px 60px
+    display: block
+    visibility: hidden
+    position: fixed
+    bottom: -750px
+    top: auto
+    left: 0
+    right: 0
+    z-index: 201
+    margin: auto
+    padding-right: 0px
+    transform: scale(0.9)
+    transition: .3s
+    transform-origin: bottom center
+
+    .inputRow
+      width: 100%
+      display: inline-flex
+      margin: auto 0px 45px -15px
+      position: relative
+      label
+        padding: 6px 3px 3px 0
+        margin-right: -3px
+        color: #999
+        position: absolute
+        display: table-row-group
+        text-transform: uppercase
+        font-family: $OpenSans
+        font-size: 13px
+        font-weight: bold
+        letter-spacing: 0.2px
+        line-height: 12px
+        z-index: -1
+        margin-top: -25px
+      input
+        position: relative
+        background-color: transparent
+        z-index: 1
+        padding: 0px 3px 3px 0
+        display: table-header-group
+        margin-right: -3px
+        line-height: 40px
+        height: 30px
+        border: none
+        outline: none
+        width: 240px
+        margin-right: 30px
+        border-bottom: 1px solid #ccc
+
+        &:focus, &:active
+          border-bottom: 1px solid $orange
+
+      input:focus + label, input:active + label, .hasEntry
+        transition: 200ms
+        color: #ccc
+        margin-top: -45px
+        font-size: 9px
+
+      input:valid
+        &:focus
+          background-color: white
+
+      label, input
+        &:nth-of-type(even)
+          float: right
+      input[name="message"]
+        width: 500px
+        float: none
+
+    #request
+      background: transparent;
+      border: none;
+      appearance: none
+      button()
+      text-transform: uppercase
+      margin: auto
+      background: $gold
+      color: white
+      font-family: $OpenSans
+      width: 180px
+      cursor: pointer
+      height: 48px
+      padding: 0
+      line-height: 48px
+      display: block
+      margin: auto
+      z-index: 2
+      padding-top: 0px
+      border: none
+
+  #successMessage
+    display: none
+    margin-top:275px
+    padding-top:50px
+    padding-bottom:0px
+    left:0
+    right:0
+    z-index: 200
+    background: white
+    max-width: 600px
+    height: 300px
+    text-align:center
+    margin-left: auto
+    margin-right:auto
+    opacity:0.96
+    position: absolute

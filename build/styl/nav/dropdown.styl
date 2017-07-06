@@ -1,0 +1,197 @@
+#flapper-menu
+  position: absolute
+  width: 100%
+  right: 0
+  z-index: 20
+  top: -50px
+  left: 0
+  display: flex
+
+.flapper-container
+  position: relative
+  width: 100%
+  max-width: 100%
+  right: 0
+  left: 0
+  display: block
+  margin: auto
+  height: 10px
+  @media(max-width:700px)
+    display: none
+
+  @media(min-width: $pageContainer)
+    width: $pageContainer
+    position: absolute
+
+ul#resume-dropdown, ul#projects-dropdown
+  position: static
+  height: 260px
+  float: right
+  display: table-cell
+  top: 0
+  margin: 54px auto 0
+  padding: 10px
+  clearfix()
+  transform-origin: top center
+  transform: translateY(50px)
+  perspective: 1500px
+  perspective-origin: 50% 0%
+  backface-visibility: hidden
+  visibility: hidden
+  opacity: 1
+
+  @media(min-width: $pageContainer)
+    position: relative
+
+  // Typekit pre-load states
+  &.wf-inactive, &.wf-loading, &.wf-active
+    opacity: 1
+    col(1/5)
+    transition: 50ms
+
+ul#resume-dropdown
+  width: 300px
+  // right: -410px
+  z-index: 20
+  transform-origin: top right
+  float: right
+
+  .dropdown
+    left: auto
+    right: -105%
+    transform-origin: 0% 0%
+    @media(min-width: $pageContainer-200px)
+      left: auto
+      right: -410px
+
+  .project
+    &:nth-child(2)
+      background-image: url('/assets/img/view.png')
+      background-size: auto 12px
+      background-position: 6% center
+      display: block !important
+    &:last-child
+      background-image: url('/assets/img/print.png')
+      background-size: 24px auto
+      background-position: 9% center
+      display: block !important
+
+  li a
+    margin-left: 80px !important
+    text-decoration: none
+
+ul#projects-dropdown
+  right: 25px
+  width: 320px
+  z-index: 20
+
+  .project
+    padding-left: 10px
+    margin-left: 20px
+    &:nth-child(2)
+      background-image: url('/assets/img/uni.png')
+    &:nth-child(3)
+      background-image: url('/assets/img/factory.png')
+    &:nth-child(4)
+      background-image: url('/assets/img/bcarter.png')
+    &:nth-child(5)
+      background-image: url('/assets/img/cents.png')
+    &:nth-child(6)
+      background-image: url('/assets/img/itp.png')
+
+.dropdown
+  width: inherit
+  position: absolute
+  visibility: inherit
+  top: 0
+  left: 0
+  right: 0
+  border: 1px solid #eee
+  border-radius: 0px 0px 2px 2px
+  background-color: $white
+  opacity: 0.1
+  transform: rotateX(-45deg) scale(0.90,0.82)
+  transform-origin: 50% 0%
+  box-shadow: 0 12px 40px 0px rgba(0,0,0,0.2)
+  clearfix()
+
+  .project, li
+    background-size: 25px auto
+    height: 44px
+    line-height: 50px
+    display: block
+    background-repeat: no-repeat
+    background-position: left 52%
+    margin: 0
+    list-style-type: none !important
+    transition: 0ms
+    visibility: hidden
+
+    a
+      font-size: 12px
+      font-family: $Ingra
+      font-style: normal
+      line-height: 50px
+      height: 50px
+      color: #111 !important
+      margin-left: 30px
+      text-decoration: none
+
+    &:first-child
+      margin-top: 5px
+      margin-bottom: 0px
+      margin-left: 20px
+    span
+      display: inline-table
+      margin-bottom: 12px
+      & > h4, & > p
+        display: inline
+        vertical-align: baseline
+        text-transform: uppercase
+        line-height $marginBottom
+
+      & > h4
+        font-size: 18px
+        letter-spacing: 1.5px
+        margin-right: 12px
+      & > p
+        font-size: 10px
+        font-weight: 500
+        letter-spacing: 0.5px
+        color: light-green
+
+ul#resume-dropdown, ul#projects-dropdown
+  &.is-next
+    perspective: 0px
+    perspective-origin: 40% 0%
+    transition: 0ms linear
+    transform: translateY(52px)
+    visibility: hidden
+
+    .dropdown
+      visibility: visible
+      box-shadow: none
+      transition: 0ms linear !important
+      transform: none !important
+      visibility: hidden
+      background: $white !important
+
+  &.is-active
+    perspective: 0px
+    perspective-origin: 50% 0%
+    transition: 60ms linear
+    transform: translateY(50px)
+    visibility: visible
+
+    .dropdown
+      visibility: visible
+      transform: rotateX(0deg) scale(1)
+      transition: 230ms cubic-bezier(.4,0,.7,0.9)
+      transform-origin: 40% 0%
+      height: 310px
+      box-shadow: 0 8px 24px 0 rgba(0,0,0,0.33)
+      opacity: 1
+
+      li
+        transition-delay: 100ms
+        visibility: visible

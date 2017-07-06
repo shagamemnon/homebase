@@ -1,0 +1,10 @@
+#base-gallery.base-gallery
+include ./../svg/close
+.arrow-left.arrow(data-navigate='left')
+.arrow-right.arrow(data-navigate='right')
+section.active-post
+    header.active-post-header.
+        <h1 itemprop='headline'>{{title}}</h1>
+        <h5 class="{{{slug}}}">{{meta_description}}</h5>
+    article.active-post-body.
+        {{content}}

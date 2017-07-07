@@ -6,7 +6,7 @@ A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without rel
 
 ## Features
 
-* Media Carousel that supports images, videos and iframe. Automatically generated for every post. View demo here.
+* Media Carousel that supports images, videos and iframe. Automatically generated for every post
 * Responsive layout w/ flexbox
 * SEO-friendly URL structure
 * AMP support
@@ -14,8 +14,10 @@ A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without rel
 
 ## Quick Start
 
-1. Download the .zip file. Navigate to Settings → General in the Ghost admin panel and upload.
+1. Download the `.zip` file. Navigate to Settings → General in the Ghost admin panel and upload.
 2. Navigate to Settings → Labs and check the green box next to **Public API**
+
+<img src="https://raw.githubusercontent.com/shagamemnon/homebase/master/assets/img/homebase-settings-screenshots.png" style="width:100%;display:flex">
 
 ## Options
 
@@ -35,6 +37,8 @@ Carousel.options({
     items: ['img', 'video', 'figure', 'iframe', 'object', 'embed']
 });
 ```
+
+<img src="https://raw.githubusercontent.com/shagamemnon/homebase/master/assets/img/homebase-carousel-screenshot.png" style="width:100%;display:flex">
 
 ##### SETTINGS
 

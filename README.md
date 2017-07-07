@@ -6,11 +6,13 @@ A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without rel
 
 ## Features
 
-* Media Carousel that supports images, videos and iframe. Automatically generated for every post
+* Media Carousel w/ support for images, videos & iframe. Automatically generated for all posts.
 * Responsive layout w/ flexbox
 * SEO-friendly URL structure
 * AMP support
 * 100/100 on Google's Page Speed test
+* * *
+<img src="https://github.com/shagamemnon/homebase/blob/master/assets/img/homebase-carousel-demo.gif?raw=true" style="width:100%;display:flex">
 
 ## Quick Start
 
@@ -21,15 +23,15 @@ A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without rel
 
 ## Options
 
-*Note: The media carousel is included by default in `functions.min.js`. If you *do not* want to modify the carousel's default behavior, then stop reading!*
+The media carousel is included by default in `functions.min.js`. **If you do *not* want to modify the carousel's default behavior, then stop reading!**
 
 ### Media Carousel
 
-Every time a visitor opens a post or page, the  `Carousel` object clones every `img`, `video`, `figure` or `iframe` that was via the Ghost admin panel. Carousel works with embedded videos (i.e. YouTube or Vimeo) and external image links. `Carousel` is made visible when a visitor clicks on any media within the post (all `img,` `video,` `figure` and `iframe` tags have the `cursor: zoom-out` property).
+Every time a visitor opens a post or page, the  `Carousel` object clones every `img`, `video`, `figure` or `iframe` that was via the Ghost admin panel. `Carousel` works with embedded videos (i.e. YouTube or Vimeo) and external image links. `Carousel` is made visible when a visitor clicks on any media within the post (all `img,` `video,` `figure` and `iframe` tags have the `cursor: zoom-out` property).
 
-To modify the Carousel's default behavior, insert this *snippet* after `functions.min.js` has loaded:
+To modify the Carousel's default behavior, insert this snippet after `functions.min.js` has loaded:
 
-```
+```javascript
 Carousel.options({
     // default options...
     swipe: 'on',
@@ -38,18 +40,24 @@ Carousel.options({
 });
 ```
 
-<img src="https://github.com/shagamemnon/homebase/blob/master/assets/img/homebase-carousel-demo.gif?raw=true" style="width:100%;display:flex">
-
 ##### SETTINGS
 
-`swipe: 'off'`
+```javascript
+swipe: 'off'
+```
 Hide arrows and turn off left-right swiping.
 
-`vertical: 'full'`
-Enable up-down scroll on images with vertical orientation. *Note: for *`img`*, *`iframe`* etc. in the carousel, enabling this will display a vertical scrollbar on oversized images *(i.e. `overflow-y: scroll`)*.*
+```javascript
+vertical: 'full'
+```
+Enable up-down scroll on images with vertical orientation. *Note: inside the carousel, a vertical scrollbar will display besides oversized *`img`*, *`iframe`* etc (e.g. `overflow-y: scroll`).*
 
-`items: ['img', 'video', 'figure', 'iframe', 'object', '.carousel-item', '#MY_SELECTOR'`, ...`]`
+```javascript
+items: ['img', 'video', 'figure', 'iframe', 'object', '.carousel-item', '#MY_SELECTOR'`, ...]
+```
 Modify parent tags and/or selectors to be included inside carousel.
 
-`init: '.MY_SELECTOR'`
+```javascript
+init: '.MY_SELECTOR'
+```
 Initiate carousel using a specified selector or tag. Default behavior is to initiate carousel whenever a `click` event is triggered on a selector in the `items` array.

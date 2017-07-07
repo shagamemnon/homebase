@@ -38,7 +38,7 @@ Carousel.options({
 });
 ```
 
-<img src="https://raw.githubusercontent.com/shagamemnon/homebase/master/assets/img/homebase-carousel-screenshot.png" style="width:100%;display:flex">
+<img src="https://github.com/shagamemnon/homebase/blob/master/assets/img/homebase-carousel-demo.gif?raw=true" style="width:100%;display:flex">
 
 ##### SETTINGS
 

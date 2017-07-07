@@ -1,6 +1,6 @@
 # HomeBase
 
-A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without reloading the page.* *HomeBase has *no frontend library dependencies* besides jQuery & the Ghost Public API.
+A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without reloading the page. HomeBase has *no frontend library dependencies* besides jQuery & the Ghost Public API.
 * * *
 
 
@@ -19,7 +19,7 @@ A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without rel
 
 ## Options
 
-**Note: The media carousel is included by default in `functions.min.js`. If you *do not* want to modify the carousel's default behavior, then stop reading!**
+*Note: The media carousel is included by default in `functions.min.js`. If you *do not* want to modify the carousel's default behavior, then stop reading!*
 
 ### Media Carousel
 
@@ -36,7 +36,7 @@ Carousel.options({
 });
 ```
 
-##### Options
+##### SETTINGS
 
 `swipe: 'off'`
 Hide arrows and turn off left-right swiping.

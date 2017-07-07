@@ -19,7 +19,7 @@ A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without rel
 
 ## Options
 
-**Note: The media carousel is included by default in **`functions.min.js`. **If you *do not* want to modify the carousel's default behavior, then stop reading!**
+**Note: The media carousel is included by default in `functions.min.js`. If you *do not* want to modify the carousel's default behavior, then stop reading!**
 
 ### Media Carousel
 

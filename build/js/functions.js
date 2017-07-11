@@ -1,19 +1,38 @@
 $(function() {
+    window.scrollTo(0, 0);
+    function postURL(event) {
+        if (window.location.pathname.length > 1) {
+            var slug = window.location.pathname.slice(1, -1);
+            history.replaceState(fetchPost(slug), null, '/' + slug + '/');
+            setTimeout(function(){
+                updateClassOn('.splash-screen', 'is-visible', 'remove');
+            }, 200);
+        } else {
+            updateClassOn('.splash-screen', 'is-visible', 'remove');
+        }
+    }
+    window.onload = postURL;
+
     let container = document.getElementById('base-gallery');
-    let arrow = document.getElementsByClassName('arrow');
+    let arrow = document.querySelectorAll('.arrow');
 
-    var postHTMLarr = $('.active-post-header h1, .active-post-header h5, .active-post-body'),
-        zoomHTMLarr = $('figure, figure img, video, img'),
-        backgroundHTML = $(".project-thumbs-background, .project-thumbs-container, .home-header"),
-        galleryLen,
-        link = $('.box-link'),
-        iconX = $('.x-icon');
-
+    var galleryLen,
+        historyState,
+        postHTMLarr = $('.active-post-header h1, .active-post-header h5, .active-post-body'),
+        backArrow = $('.home-link, .back-icon'),
+        links = document.querySelectorAll('.box-link'),
+        galleryItem = document.getElementsByClassName('gallery-item'),
+        boxContainer = document.querySelector('.box-container'),
+        closeButton = document.querySelector('.x-icon'),
+        topMenu = document.querySelectorAll('ul#topMenu li'),
+        navContact = document.querySelector('.nav-contact'),
+        iconX = document.querySelector('.x-icon'),
+        input = $('input'),
+        contactSection = $('.contact-section');
 
     function changeSlide(i) {
         $('.gallery-item[tabindex=' + i + ']').addClass('is-active').siblings('.gallery-item').removeClass('is-active');
     }
-
 
     var Post = function(slug) {
         this.slug = slug;
@@ -22,27 +41,51 @@ $(function() {
     Post.prototype = Object.create(Post.prototype);
     Post.prototype.constructor = Post;
 
+    var updateClassOn = function(selector, clazzes, toggle) {
+        var classes = document.querySelectorAll(''+selector+'');
+        if (toggle === 'add') {
+            for (var i = 0; i < classes.length; i++) {
+                classes[i].classList.add(''+clazzes+'')
+            }
+        }
+        if (toggle === 'remove' || toggle === false) {
+            for (var i = 0; i < classes.length; i++) {
+                classes[i].classList.remove(''+clazzes+'')
+            }
+        }
+    };
+
+    var elemArr = [];
+
+    var getImageSiblings = function(selector) {
+        var elements = document.querySelector(''+selector+'').nextElementSibling;
+        elemArr.splice(0);
+        while (elements) {
+            console.log(elements.nodeName);
+            elemArr.push(elements);
+            elements = elements.nextElementSibling;
+        }
+        return elemArr;
+    };
 
     var pageState = function(status) {
         window.scrollTo(0, 0);
 
         switch (status) {
             case 'isPost':
-                $('body').addClass('post-template');
-                $('.index-container, body, nav, .top-bar').addClass('is-white');
-                $('.active-post').addClass('is-visible');
-                $('.box-container').removeClass('is-visible');
+                updateClassOn('body', 'post-template', 'add');
+                updateClassOn('.active-post', 'is-visible', 'add');
+                updateClassOn('.box-container', 'is-visible', 'remove');
                 break;
 
             case 'isHome':
-                $('body').removeClass('post-template');
-                $('.index-container, body, nav, .top-bar').removeClass('is-white');
-                $('.active-post').removeClass('is-visible');
-                $('.box-container').addClass('is-visible');
+                updateClassOn('body', 'post-template', 'remove');
+                updateClassOn('.active-post', 'is-visible', 'remove');
+                updateClassOn('.box-container', 'is-visible', 'add');
                 break;
 
             case 'isContact':
-                $('.contact-section').addClass('is-active');
+                updateClassOn('.contact-section', 'is-active', 'add');
                 $('.nav-contact').addClass('is-active').siblings('.nav-projects').removeClass('is-active');
                 setTimeout(function() {
                     $('input#email').focus();
@@ -50,7 +93,7 @@ $(function() {
                 break;
 
             case 'closeContact':
-                $('.contact-section').removeClass('is-active');
+                updateClassOn('.contact-section', 'is-active', 'remove');
                 $('.nav-projects').addClass('is-active').siblings().removeClass('is-active');
                 break;
 
@@ -59,18 +102,22 @@ $(function() {
         }
 
         if (status === 'closeContact' || status === 'isHome') {
-            iconX.removeClass('post-visible contact-visible').hide();
+            updateClassOn('.x-icon', 'x-visible', 'remove');
         }
-        if (status === 'isPost' || status === 'isContact') {
-            iconX.addClass('post-visible contact-visible').show();
+        if (status === 'isContact') {
+            updateClassOn('.x-icon', 'x-visible', 'add');
         }
-
     };
 
 
     var Carousel = {
+
         build: function() {
-            $(container).empty();
+            var container = document.getElementById('base-gallery');
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+            // $(container).empty();
             var elements = Array.from(document.getElementsByTagName('figure')),
                 gallery = [];
 
@@ -87,11 +134,14 @@ $(function() {
 
         display: function() {
             var imgIndex = $(this).attr('tabindex'),
-                activeImg = $('.gallery-item[tabindex=' + imgIndex + ']');
+                activeImg = '.gallery-item[tabindex="' + imgIndex + '"]',
+                $activeImg = $(activeImg);
 
             if (container.className !== 'base-gallery is-visible') {
-                activeImg.addClass('is-active').siblings('.gallery-item').removeClass('is-active');
-                $(arrow).addClass('is-visible');
+                updateClassOn((activeImg), 'is-active', 'add');
+                getImageSiblings('.gallery-item');
+                $activeImg.siblings('.gallery-item').removeClass('is-active');
+                updateClassOn('.arrow', 'is-visible', 'add');
                 container.className = 'base-gallery is-visible';
             }
         },
@@ -123,46 +173,29 @@ $(function() {
         }
     };
 
-    var historyState;
-
     Post.prototype.build = function(postData) {
         for (var i = 0; i <= postData.length; i++) {
             while (i === postData.length) {
+                var media = document.querySelectorAll('figure');
                 Carousel.build();
-                $('figure').on("click", Carousel.display);
-                $(arrow).on("click", Carousel.shift);
-                $(container).on("click", Carousel.cloak);
-                if (i === postData.length) {
-                    console.log(historyState);
-                    return historyState = $('.active-post-body').html();
-                }
+                media.forEach(function(elem){
+                    elem.addEventListener('click', Carousel.display)
+                });
+                arrow.forEach(function(elem){
+                    elem.addEventListener('click', Carousel.shift);
+                });
+                container.addEventListener('click', Carousel.cloak);
                 i++;
             }
             $(postHTMLarr[i]).html(postData[i]);
         }
     };
 
-    function postURL(e){
-        var x = 0;
-        if (window.location.pathname.length > 1) {
-            var slug = window.location.pathname.slice(1, -1);
-            history.replaceState(fetchPost(slug), null, '/'+slug+'/')
-        }
-        if (window.location.pathname.length === 1) {
-            window.location.pathname = '/';
-            pageState('isHome');
-        }
-    }
-
-    // window.onpopstate = postURL;
-    window.onload = postURL;
-
     function parseLink(e) {
         var slug = $(this).attr('href').slice(1, -1);
         e.preventDefault();
         fetchPost(slug);
     }
-    link.on("click", parseLink);
 
 
     function fetchPost(slug) {
@@ -173,16 +206,15 @@ $(function() {
                     [data.posts[0].title, data.posts[0].meta_description, data.posts[0].html]
             );
             pageState('isPost');
-            if (window.location.pathname.length === 1) {
-                history.pushState(null, null, '/');
-            }
-            history.pushState(null, null, '/'+slug);
-            iconX.on("click", function() {
-                pageState('isHome');
-                history.replaceState(null, null, '/');
-            })
-
+            history.pushState(null, null, '/' + slug);
+            closeButton.addEventListener('click', newPost);
         })
+    }
+
+
+    function newPost() {
+        pageState('isHome');
+        history.replaceState(null, null, '/');
     }
 
 
@@ -193,16 +225,17 @@ $(function() {
         $('#' + title + '-dropdown').addClass('is-active').removeClass('is-next')
             .siblings('ul').addClass('is-next').removeClass('is-active');
 
-        $('*').on("click", function() {
+        $('*').on('click', function() {
             $('.dropdown').parents('ul').removeClass('is-active is-next');
         });
     }
-    $('ul#topMenu li[role="presentation"], ul#topMenu li[role="presentation"] a').on("mouseover", showDropdown);
 
 
     function buildContact(e) {
         e.preventDefault();
         pageState('isContact');
+        var input = document.querySelector('input');
+        var contactSection = document.querySelector('.contact-section');
 
         function moveLabel() {
             var label = $(this).next('label');
@@ -210,12 +243,22 @@ $(function() {
             // if ($(this).charCount <= 0) {
             label.addClass('hasEntry');
         }
-        $('input').on("focusin", moveLabel);
+        input.addEventListener('focusin', moveLabel);
 
         function closeContact() {
             pageState('closeContact');
         }
-        $('.contact-section').on("click", closeContact);
+        contactSection.addEventListener("click", closeContact);
     }
-    $('.nav-contact').on("click", buildContact);
+
+    navContact.addEventListener('click', buildContact);
+
+    topMenu.forEach(function(elem) {
+        elem.addEventListener('mouseover', showDropdown);
+    })
+
+    links.forEach(function(elem) {
+        elem.addEventListener('click', parseLink);
+    })
+
 });

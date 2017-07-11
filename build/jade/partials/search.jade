@@ -1,0 +1,12 @@
+//- .search-bar
+//-   img.close-search(src="/assets/img/close_white.png")
+//-   label(for="search-field", style="display:none") &nbsp;
+//-   input#search-field(size="10", placeholder="SEARCH")
+//-   input(type="submit", value="search", style="display:none")
+//- .results-overlay
+//-   #results
+
+//- | {{#get "posts"}}{{#foreach posts}}
+//- #postQuery.
+//-   <a class="postQuery" name="{{title}}" href="{{slug}}">{{title}}</a>
+//- | {{/foreach}}{{/get}}

@@ -1,0 +1,183 @@
+#cardModule
+  display: none !important
+  position: fixed
+  width: 700px
+  max-width: 100%
+  padding: 0 50px
+  max-height: 475px
+  min-height: 475px
+  background: white
+  border-bottom: 1px solid #bbb
+  bottom: -500px
+  left: 0
+  right: 0
+  margin: auto
+  z-index: 11
+  visibility: visible
+  transform: scale(0.2)
+  transition: 140ms
+  &.is-active
+    transform: scale(1)
+    transition: 140ms
+    top: 25px
+    bottom: 0
+    visibility: visible
+
+  .jp-card-container
+    span(1/2)
+    top: 37px
+    left: 0px
+    clearfix()
+    position: absolute
+    opacity: 0
+    transition: 320ms
+    transform: scale(0.75) !important
+    &.is-visible
+      transition: 320ms
+      opacity: 1
+
+  .card-wrapper
+    margin: 0px auto
+
+  .form-container
+    position: absolute
+    top: 50%
+    left: 0
+    right: 0
+    transform: translateY(-50%)
+    width: inherit
+    margin: 100px auto 0
+    z-index: 9
+    form
+      margin-bottom: 0
+    .field
+      border-bottom: 1px solid transparent
+      label
+        label()
+        width: inherit
+        margin-left: 1px
+        margin-bottom: 01
+        padding-left: 0px
+        display: block
+      input
+        input()
+        padding: 0 5px 0 4px
+        margin: auto
+        width: inherit
+      &:first-child
+        col(15/50, gutter: 3)
+      &:nth-child(2)
+        col(15/50, gutter: 3)
+      &:nth-child(3)
+        col(11/50, gutter: 3)
+        input
+          padding: 0 0 0 4px
+          letter-spacing: 0.2px
+      &:last-child
+        col(9/50, gutter: 3)
+        input
+          padding: 0 0 0 4px
+          letter-spacing: 0.2px
+
+      &:nth-child(n)
+        &.is-visible
+          visibility: visible
+
+  #amountWrapper
+    span(1/2)
+    clearfix()
+    z-index: 12
+    position: absolute
+    margin: 25px auto 0 !important
+    text-align: center
+    text-shadow: 0 0 0 #222
+    height: 150px
+    left: 0
+    right: 0px
+    top: 37px
+    &.is-active
+      left: 48%
+      text-align: right
+      transition: 320ms
+      p
+        font-size: 100px
+
+      p:first-child
+        font-size: 37px
+        font-weight: 700
+        border-bottom: none
+        sup
+          top: -1.4em
+    p
+      text-shadow: 0 0 0 #222
+      top: -25px
+      position: relative
+      display: inline
+      background: transparent
+      color: transparent
+      font-size: 125px
+      line-height: 200px
+      border: none
+      outline: none
+      font-weight: 700
+      margin: auto
+      letter-spacing: -4px
+      z-index: 10
+      text-align: center
+      font-family: $Condensed
+    p:first-child
+      font-size: 50px
+      font-family: $Condensed
+      width: 100%
+      sup
+        top: -1em
+    p.placeholder
+      color: grey
+      opacity: 0.5
+    p#price
+      min-width: 100px
+      width: 100%
+      font-family: $Condensed
+    label
+      label()
+      display: none
+      bottom: 0;
+      top: -55px;
+      position: relative;
+      left: 40px;
+      letter-spacing: 0
+button#next
+  button()
+  position: absolute
+  background: $money
+  color: white
+  top: 400px
+  bottom: 0
+  right: 35px
+  width: 200px
+  font-size: 16px
+  height: 50px
+  z-index: 13
+  float: right
+  cursor: pointer
+  border: none
+  font-family: $Condensed
+
+.separator
+  visibility: hidden
+  position: absolute
+  height: 150px
+  background: transparent
+  border-left: 1px solid #ddd
+  width: 1px
+  left: 0
+  right: 0
+  margin: auto
+  shift(1/18)
+  top: 60px
+  &.is-visible
+    transition-delay: 200ms
+    visibility: visible
+
+#cost
+  display: none

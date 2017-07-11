@@ -1,0 +1,21 @@
+.nav
+  | {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}
+  | {{#if @blog.logo}}<a class="logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Logo" /></a>{{/if}}
+  h3.nav-title Menu
+    a.nav-close(href="#")
+      span.hidden Close
+
+  h1.blog-title
+    | {{@blog.title}}
+
+  ul.
+    {{#foreach navigation}}<li class="nav-{{slug}}{{#if current}} nav-current{{/if}}" role="presentation"><a href="{{url absolute="true"}}">{{label}}</a></li>{{/foreach}}
+  div
+    | {{#if @labs.subscribers}}<a class="subscribe-button" href="{{@blog.url}}/subscribe/">Subscribe</a>
+    | {{else}}<a class="subscribe-button icon-feed" href="{{@blog.url}}/rss/">Subscribe</a>
+    | {{/if}}
+
+span(class="nav-cover")
+
+//- h2.blog-description.
+//-   {{@blog.description}}

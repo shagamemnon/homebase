@@ -11,13 +11,13 @@
 .back-icon
   z-index: 1001
   cursor: pointer
-  position: fixed
+  position: absolute
   top: -29px
-  display: none
+  visibility: hidden
 
   svg
-    left: 33px
-    margin-left: -100px
+    left: 0px
+    margin-left: -55px
     position: absolute
     transform: scale(0.10)
 
@@ -40,3 +40,6 @@
       fill: #666
       path
         fill: #666
+  &.x-visible
+    display: block
+    visibility: visible

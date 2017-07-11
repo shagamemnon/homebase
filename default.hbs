@@ -7,6 +7,11 @@
     <meta name="description" content="{{meta_description}}">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .box-container .box-link:nth-child(n+3) {
+          background-image: none !important
+      }
+    </style>
     <link rel="shortcut icon" href="{{asset 'img/favicon.ico'}}">
     <link rel="stylesheet" href="{{asset 'css/main.min.css'}}">
     <script defer src="{{asset 'js/libs/jquery.min.js'}}"></script>
@@ -30,7 +35,7 @@
       </style>
     </noscript>{{ghost_head}}
   </head>
-  <body data-visit="1" class="{{body_class}}">
+  <body data-visit="1" class="{{body_class}}">{{> utilities/splash}}
     <div class="index-container">
       {{> loop}}
       {{navigation}}

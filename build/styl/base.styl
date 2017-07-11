@@ -1,55 +1,75 @@
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, form, fieldset, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, menu, nav, section, summary, time, mark, audio, video
-  background transparent
-  font-size 100%
-  vertical-align baseline
-  border 0
-  outline 0
-  margin 0
-  padding 0
-  font-family: $ParagraphFont
+    background transparent
+    font-size 100%
+    vertical-align baseline
+    border 0
+    outline 0
+    margin 0
+    padding 0
+    font-family: $ParagraphFont
 
 *
-  box-sizing: border-box
+    box-sizing: border-box
 
 html
-  background: transparent
-  -webkit-text-size-adjust 100%
-  -ms-text-size-adjust 100%
-  font-size: 62.5%
-  -webkit-font-smoothing antialiased
-  -webkit-overflow-scrolling touch
+    background: transparent
+    -webkit-text-size-adjust 100%
+    -ms-text-size-adjust 100%
+    font-size: 62.5%
+    -webkit-font-smoothing antialiased
+    -webkit-overflow-scrolling touch
 
 body
-  -webkit-font-smoothing: antialiased;
-  margin: 0 auto
-  padding: 0
-  font-family: $Slab
-  font-size: 1.7em
-  font-weight: 400
-  color: #151515
-  max-width: 100%
-  background: $backgroundHome
+    -webkit-font-smoothing: antialiased;
+    margin: 0 auto
+    padding: 0
+    font-family: $Slab
+    font-size: 1.7em
+    font-weight: 400
+    color: #151515
+    max-width: 100%
+    background: $backgroundHome
 
-  @media(max-width: 900px)
-    max-width: 98%
+    @media(max-width: 900px)
+        max-width: 90%
+
+footer
+    display: flex
+    width: 95%
+    color: #ddd
+    text-align: center
+    margin: 100px auto 25px
+    font-size: 14px
+
+    & > section span
+        margin-left: 10px
+        padding-left: 10px
+        border-left: 1px solid #aaa
+        color: white !important
+
+    & > section span
+        &:first-child
+            border: none
+    section span a
+        color: white !important
 
 article, aside, figure, figcaption, footer, header, nav, section
-  display block
+    display block
 
 img
-  -ms-interpolation-mode bicubic
-  page-break-inside avoid
+    -ms-interpolation-mode bicubic
+    page-break-inside avoid
 
 img, object, embed
-  display block
-  vertical-align middle
-  max-width 100%
-  width auto
-  height auto
-  border 0
+    display block
+    vertical-align middle
+    max-width 100%
+    width auto
+    height auto
+    border 0
 
 audio, canvas, video
-  display inline-block
+    display inline-block
 
 audio
   &:not([controls])
@@ -115,21 +135,13 @@ h5
     display: block
     position: absolute
     padding-top: 0px
-    transform: translateY(-740px) scale(0.96)
+    transform: translateY(20px) scale(0.96)
     top: 0
     left: 0
     right: 0
     overflow: hidden
     height: 100%
     margin-bottom: -700px
-
-    &.is-visible
-        position: relative
-        visibility: visible
-        transform: translateY(-750px) scale(1)
-        transition-delay: 80ms
-        transition-duration: 180ms
-        overflow: visible
 
     h5
         color: gray
@@ -139,25 +151,48 @@ h5
         li
             padding-left: 10px
 
-figure
-    margin: 0 0 25px
-    padding: 12px 0 0
-    height: auto
-    cursor: zoom-in
+    figure
+        margin: 0 0 25px
+        padding: 12px 0 0
+        height: auto
+        cursor: zoom-in
 
-    figcaption
-        border-top: 1px solid #ddd
-        margin-top: 6px
-        padding-top: 6px
-    em
-        display: block
-        font-size: 17px
-        color: gray
-        line-height: 25px
+        figcaption
+            border-top: 1px solid #ddd
+            margin-top: 6px
+            padding-top: 6px
+        em
+            display: block
+            font-size: 17px
+            color: gray
+            line-height: 25px
 
-img, video, iframe, object, embed
-    display: flex
-    width: 100%
+    img, video, iframe, object, embed
+        display: flex
+        width: 100%
+
+        &.zoomable
+            background-image: url('/assets/img/zoom.png')
+            background-color: rgba(0,0,0,0.9)
+            background-position: bottom left
+            background-size: 25px auto
+
+.post-template
+    background: white !important
+    .active-post
+        position: relative
+        visibility: visible
+        transform: translateY(0px) scale(1)
+        transition-delay: 80ms
+        transition-duration: 180ms
+        overflow: visible
+    nav, .top-bar
+        background: white
+        border-bottom: 1px solid #eee
+    .back-icon
+        visibility: visible
+    .box-container
+        display: none
 
 .video-container
     position: relative;

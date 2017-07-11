@@ -1,5 +1,6 @@
 .top-bar
 nav
+  include ./svg/arrow
   a(href="/").home-link
     | {{#if @blog.logo}}<a class="logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Logo" /></a>
     | {{else}}

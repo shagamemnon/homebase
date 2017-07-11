@@ -1,6 +1,27 @@
 
 <div class="top-bar"></div>
-<nav><a href="/" class="home-link">
+<nav>
+  <div data-post="close" data-filter="close" href="https://www.franktaylor.io" class="svg back-icon">
+    <svg width="142px" height="112px" viewBox="0 0 142 112" åversion="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+        <title>Page 1</title>
+        <desc>Created with Sketch.</desc>
+        <defs>
+            <path d="M78.5,9.87910667 C78.5,11.6671067 79.0920267,13.7610533 80.5820267,15.2510533 L112.166053,46.83508 L11.45,46.83508 C7.27402667,46.83508 4,50.1091067 4,54.28508 C4,58.4610533 7.27402667,61.73508 11.45,61.73508 L112.181947,61.73508 L80.59792,93.02508 C79.10792,94.51508 78.5158933,96.2991067 78.5158933,98.3970267 C78.5158933,100.47508 79.10792,102.275 80.59792,103.765 C83.57792,106.745 88.3419467,106.745 91.02792,103.765 L135.135893,59.6570267 C135.42992,59.363 135.72792,58.75508 136.03784,58.4610533 C137.52784,56.383 137.52784,53.6970267 136.625893,51.5991067 C136.331867,50.7011333 135.72792,49.81508 135.135893,49.2111333 L135.135893,49.2111333 L91.02792,4.52702667 C88.04792,1.54702667 83.27992,1.54702667 80.59792,4.52702667 C79.10792,6.01702667 78.5,7.80105333 78.5,9.87910667 Z" id="path-1"></path>
+            <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+                <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.17334692 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+            </filter>
+        </defs>
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g transform="translate(70.621270, 54.146013) scale(-1, 1) translate(-70.621270, -54.146013) ">
+                <use fill="#C79D6F" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#C79D6F" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </svg>
+  </div><a href="/" class="home-link">
     {{#if @blog.logo}}<a class="logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Logo" /></a>
     {{else}}
     <h1 class="blog-title"><span>{{@blog.title}}</span><span>|</span><span class="homebase">HomeBase</span></h1>{{/if}}</a>

@@ -19,6 +19,9 @@
         transition: 200ms
         cursor: zoom-out
 
+        & ~ .arrow
+            display: block
+
 .arrow
     background-size: cover
     height: 36px
@@ -34,9 +37,6 @@
     background-size: 70%
     background-position: center
     border-radius: 100%
-
-    &.is-visible
-        display: block
 
 .arrow-left
     left: 0.75%
@@ -59,6 +59,11 @@
     transform: translateY(-50%)
     top: 50%
     overflow-x: scroll
+
+    & > img, figure, video, object, embed, iframe
+        max-height: 88vh
+        max-width: 96vw
+        height: auto
 
     figcaption
         padding-top: 12px

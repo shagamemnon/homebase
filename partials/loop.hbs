@@ -20,4 +20,8 @@
     </ul>
   </div>
 </div>
-<div class="box-container is-visible">{{#foreach posts}}<a href='{{{url}}}' class="box box-link"><h2 class="box-title">{{title}}</h5><p class="box-desc">{{meta_description}}</p></a>{{/foreach}}</div>{{/get}}
+<div class="box-container is-visible">
+  {{#foreach posts}}{{#if featured}}<a href='{{{url}}}' class="box box-link">
+  <div class="background-image" style="border-radius:2px;background-size: cover;height: 250px;background-repeat: no-repeat;background-position: top;box-shadow: -3px 8px 14px 2px #aaa;background-image: url({{image absolute="true"}});position:relative;display: flex;max-width: 80%;width:auto;margin: 25px 25px 0 25px"></div><h2 class="box-title">{{title}}</h2><p class="box-desc">{{meta_description}}</p></a>{{/if}}
+      <a href='{{{url}}}' class="box box-link"><h2 class="box-title">{{title}}</h5><p class="box-desc">{{meta_description}}</p></a>{{/foreach}}
+</div>{{/get}}

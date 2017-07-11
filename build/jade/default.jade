@@ -9,6 +9,10 @@ html(lang="en")
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         //- style
         //-   include ./small.css
+        style.
+            .box-container .box-link:nth-child(n+3) {
+                background-image: none !important
+            }
         link(rel='shortcut icon', href="{{asset 'img/favicon.ico'}}")
         link(rel='stylesheet', href="{{asset 'css/main.min.css'}}")
         
@@ -24,6 +28,7 @@ html(lang="en")
         | {{ghost_head}}
 
     body(class="{{body_class}}", data-visit="1")
+        | {{> utilities/splash}}
         .index-container
             | {{> loop}}
             | {{navigation}}

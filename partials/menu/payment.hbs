@@ -1,0 +1,37 @@
+
+<div id="cardModule">
+  <div class="card-wrapper">
+    <div id="amountWrapper">
+      <form>
+        <p>
+          <label>Amount</label><sup>$</sup>
+        </p>
+        <p id="priceEntry" tabindex="1" contenteditable="true"></p>
+        <p class="placeholder">0</p><span style="font-weight:300" class="blinking-cursor">|</span>
+      </form>
+    </div>
+  </div>
+  <div class="form-container active">
+    <form id="cardEntry" action="">
+      <div class="field">
+        <input tabindex="2" placeholder="Bob Saget" type="text" name="name"/>
+        <label for="name">Full Name</label>
+      </div>
+      <div class="field">
+        <input tabindex="3" placeholder="•••• •••• •••• ••••" type="tel" name="number"/>
+        <label for="number">Card Number</label>
+      </div>
+      <div class="field">
+        <input tabindex="4" placeholder="MM/YY" type="tel" name="expiry"/>
+        <label for="expiry">Expiration Date</label>
+      </div>
+      <div class="field">
+        <input tabindex="5" placeholder="•••" type="number" name="cvc"/>
+        <label for="cvc">Security Code</label>
+      </div>
+    </form>
+  </div>
+  <input id="cost" value="" style="display:none"/>
+  <button id="next">Make Payment</button>
+  <div class="separator"></div>
+</div>

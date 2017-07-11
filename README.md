@@ -1,7 +1,6 @@
 # HomeBase
 
-A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without reloading the page. HomeBase has *no frontend library dependencies* besides jQuery & the Ghost Public API.
-* * *
+> A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without reloading the page. HomeBase has *no frontend library dependencies* besides jQuery & the Ghost Public API.
 
 
 ## Features
@@ -11,53 +10,62 @@ A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without rel
 * SEO-friendly URL structure
 * AMP support
 * 100/100 on Google's Page Speed test
-* * *
-<img src="https://github.com/shagamemnon/homebase/blob/master/assets/img/homebase-carousel-demo.gif?raw=true" style="width:100%;display:flex">
+<!--<img src="https://github.com/shagamemnon/homebase/blob/master/assets/img/homebase-carousel-demo.gif?raw=true" style="width:100%;display:flex">-->
 
 ## Quick Start
 
-1. Download the `.zip` file. Navigate to Settings → General in the Ghost admin panel and upload.
-2. Navigate to Settings → Labs and check the green box next to **Public API**
+1. <a href="https://github.com/shagamemnon/homebase/archive/master.zip">Download theme .zip file</a>. Navigate to <span style="background:#57A3E8;color:white;padding: 2px;border-radius:2px">Settings</span> → <span style="background:#57A3E8;color:white;padding: 2px;border-radius:2px">General</span> in the Ghost admin panel and upload.
+2. Navigate to <span style="background:#57A3E8;color:white;padding: 2px;border-radius:2px">Settings</span> → <span style="background:#57A3E8;color:white;padding: 2px;border-radius:2px">Labs</span>  and check the green box next to **Public API**
 
 <img src="https://raw.githubusercontent.com/shagamemnon/homebase/master/assets/img/homebase-settings-screenshots.png" style="width:100%;display:flex">
 
 ## Options
 
-The media carousel is included by default in `functions.min.js`. **If you do *not* want to modify the carousel's default behavior, then stop reading!**
+> The media carousel is included by default in `functions.min.js`. **If you do *not* want to modify the carousel's default behavior, then stop reading!**
 
 ### Media Carousel
 
-Every time a visitor opens a post or page, the  `Carousel` object clones every `img`, `video`, `figure` or `iframe` that was via the Ghost admin panel. `Carousel` works with embedded videos (i.e. YouTube or Vimeo) and external image links. `Carousel` is made visible when a visitor clicks on any media within the post (all `img,` `video,` `figure` and `iframe` tags have the `cursor: zoom-out` property).
+Every time a visitor opens a post or page, the  `Carousel` object clones every `img`, `video`, `figure` or `iframe` that was added via the Ghost admin panel. `Carousel` works with all media - including embedded videos (i.e. YouTube or Vimeo) and external image links. This feature was inspired by <a href="paper.dropbox.com">Dropbox Paper</a>.
+
+`Carousel` is made visible when a visitor clicks on any media within the post (all `img,` `video,` `figure` and `iframe` tags have the `cursor: zoom-in` property to convey a clickable region to visitors).
 
 To modify the Carousel's default behavior, insert this snippet after `functions.min.js` has loaded:
 
+
 ```javascript
+<script>
 Carousel.options({
-    // default options...
+	// 	default options...
+    items: ['img', 'video', 'figure', 'iframe', 'embed'],
     swipe: 'on',
-    vertical: 'contained',
-    items: ['img', 'video', 'figure', 'iframe', 'object', 'embed']
+    verticalOrient: 'contained'
 });
+</script>
 ```
 
-##### SETTINGS
 
-```javascript
-swipe: 'off'
-```
-Hide arrows and turn off left-right swiping.
+### Settings
 
-```javascript
-vertical: 'full'
-```
-Enable up-down scroll on images with vertical orientation. *Note: inside the carousel, a vertical scrollbar will display besides oversized *`img`*, *`iframe`* etc (e.g. `overflow-y: scroll`).*
-
-```javascript
-items: ['img', 'video', 'figure', 'iframe', 'object', '.carousel-item', '#MY_SELECTOR'`, ...]
-```
-Modify parent tags and/or selectors to be included inside carousel.
-
+### init
 ```javascript
 init: '.MY_SELECTOR'
 ```
-Initiate carousel using a specified selector or tag. Default behavior is to initiate carousel whenever a `click` event is triggered on a selector in the `items` array.
+Initialize carousel using a specified selector or tag. Default behavior is to initialize whenever a `click` event is fired on a selector in the `items` array.
+
+#### items
+```javascript
+items: ['img', 'video', 'figure', 'iframe', '.carousel-item', '.MY_SELECTOR' ...]
+```
+Modify parent tags and/or selectors to be included inside carousel.
+
+#### swipe
+```javascript
+swipe: 'off'  // default 'on'
+```
+Hide arrows and turn off left-right swiping.
+
+#### verticalOrient
+```javascript
+verticalOrient: 'full'  // default 'contained'
+```
+Enable up-down scroll on images with vertical orientation. *Note: on desktop browsers, a vertical scrollbar (e.g. `overflow-y: scroll`) will display beside oversized `<img>`, `<iframe>` etc. inside the carousel.*

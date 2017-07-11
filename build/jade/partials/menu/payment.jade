@@ -1,0 +1,27 @@
+#cardModule
+  .card-wrapper
+    #amountWrapper
+      form
+        p
+          label Amount
+          sup $
+        p#priceEntry(tabindex="1", contenteditable="true")
+        p.placeholder 0
+        span.blinking-cursor(style="font-weight:300") |
+  .form-container.active
+    form#cardEntry(action='')
+      .field
+        input(tabindex="2", placeholder='Bob Saget', type='text', name='name')
+        label(for="name") Full Name
+      .field
+        input(tabindex="3", placeholder='•••• •••• •••• ••••', type='tel', name='number')
+        label(for="number") Card Number
+      .field
+        input(tabindex="4", placeholder='MM/YY', type='tel', name='expiry')
+        label(for="expiry") Expiration Date
+      .field
+        input(tabindex="5", placeholder='•••', type='number', name='cvc')
+        label(for="cvc") Security Code
+  input#cost(value="", style="display:none")
+  button#next Make Payment
+  .separator

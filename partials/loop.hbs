@@ -9,7 +9,7 @@
         <li class="project"><a href="{{{url}}}" class="project-link box-link post-link">{{title}}</a></li>{{/foreach}}
       </div>
     </ul>
-    <ul id="resume-dropdown">
+    <ul>
       <div class="dropdown wf-loading">
         <li><span>
             <h4>Frank Taylor</h4>
@@ -21,7 +21,20 @@
   </div>
 </div>
 <div class="box-container is-visible">
-  {{#foreach posts}}{{#if featured}}<a href='{{{url}}}' class="box box-link">
-  <div class="background-image" style="border-radius:2px;background-size: cover;height: 250px;background-repeat: no-repeat;background-position: top;box-shadow: -3px 8px 14px 2px #aaa;background-image: url({{image absolute="true"}});position:relative;display: flex;max-width: 80%;width:auto;margin: 25px 25px 0 25px"></div><h2 class="box-title">{{title}}</h2><p class="box-desc">{{meta_description}}</p></a>{{/if}}
-      <a href='{{{url}}}' class="box box-link"><h2 class="box-title">{{title}}</h5><p class="box-desc">{{meta_description}}</p></a>{{/foreach}}
+  {{#foreach posts}}{{#if featured}}
+      <a href='{{{url}}}' class="box box-link">
+          <div class="background-image" style="background-image: url({{image absolute="true"}})"></div>
+          <h2 class="box-title">{{title}}</h2>
+          <p class="box-desc">{{meta_description}}</p>
+          <div class="thumbnail-buttons">
+              <button data-navigate='{{{url}}}' class="post-button">View Post</button>
+              <button data-navigate='{{{url}}}' class="gallery-button">View Gallery</button>
+          </div>
+      </a>
+  {{else}}
+  <a href='{{{url}}}' class="box box-link">
+      <h2 class="box-title">{{title}}</h2>
+      <p class="box-desc">{{meta_description}}</p>
+  </a>
+  {{/if}}{{/foreach}}
 </div>{{/get}}

@@ -18,20 +18,26 @@ html
     font-size: 62.5%
     -webkit-font-smoothing antialiased
     -webkit-overflow-scrolling touch
+    @media(max-width: 700px)
+        font-size: 57.5%
 
 body
     -webkit-font-smoothing: antialiased;
     margin: 0 auto
     padding: 0
     font-family: $Slab
-    font-size: 1.7em
+    font-size: 1.7rem
     font-weight: 400
     color: #151515
     max-width: 100%
     background: $backgroundHome
+    text-rendering: optimizeLegibility
+    &.post-template
+        @media(max-width: 900px)
+            max-width: 90%
 
-    @media(max-width: 900px)
-        max-width: 90%
+    @media(min-width: 1400px)
+        max-width: 1400px
 
 footer
     display: flex
@@ -39,19 +45,28 @@ footer
     color: #ddd
     text-align: center
     margin: 100px auto 25px
-    font-size: 14px
+    font-size: 1.45rem
+    color: white !important
 
     & > section span
         margin-left: 10px
         padding-left: 10px
         border-left: 1px solid #aaa
-        color: white !important
+        @media(max-width: 700px)
+            display: block
+            width: 92%
+            padding: 0
+            margin: auto
+            border: none
+            color: #aaa
+            padding-bottom: 12px
 
     & > section span
         &:first-child
             border: none
-    section span a
-        color: white !important
+
+.home-template footer section span a
+    color: white !important
 
 article, aside, figure, figcaption, footer, header, nav, section
     display block
@@ -91,41 +106,41 @@ a
 
 h1
     font-family: $Slab
-    font-size: 52px
+    font-size: 4.1rem
     line-height: 1
     margin: 0 auto 12px
+    letter-spacing: -0.5px
 
 h2, h3, h2 strong, h3 strong, figcaption strong
-    font-family: $Pill
+    font-family: $Ingra
     letter-spacing: 2px
     text-align: left
     text-transform: uppercase
     color: #242424
-    font-weight: 800
+    font-weight: 700
     margin-bottom: 12px
-    margin-top: 50px
 
 h2
-    font-size: 25px
+    font-size: 2.4rem
     line-height: 25px
 
 h3
-    font-size: 25px
+    font-size: 2.4rem
     line-height: 25px
 
 h4, figcaption strong
-    font-size: 19px
+    font-size: 1.9rem
     line-height: 25px
     text-transform: uppercase
-    font-family: $Pill
+    font-family: $Ingra
 
 h4, h5
-    margin: 0 auto 25px
+    margin: 0 auto 12px
 
 h5
-    font-size: 26px
+    font-size: 2.3rem
     font-family: $Ingra !important
-    font-weight: 300
+    font-weight: normal
 
 .active-post
     width: 100%
@@ -135,13 +150,16 @@ h5
     display: block
     position: absolute
     padding-top: 0px
-    transform: translateY(20px) scale(0.96)
+    transform: translateY(50px) scale(0.96)
     top: 0
     left: 0
     right: 0
     overflow: hidden
     height: 100%
-    margin-bottom: -700px
+    margin-bottom: 0px
+
+    h1, h1 strong, h2, h2 strong, h3, h2 strong, h3 strong, figcaption strong, h4, h4 strong, h3 strong
+        margin-top: 5rem
 
     h5
         color: gray
@@ -158,7 +176,6 @@ h5
         cursor: zoom-in
 
         figcaption
-            border-top: 1px solid #ddd
             margin-top: 6px
             padding-top: 6px
         em
@@ -170,6 +187,11 @@ h5
     img, video, iframe, object, embed
         display: flex
         width: 100%
+        border-top: 1px solid #ddd
+        border-bottom: 1px solid #ddd
+        padding-top: 12px
+        padding-bottom: 12px
+        margin-top: 0px
 
         &.zoomable
             background-image: url('/assets/img/zoom.png')
@@ -182,7 +204,7 @@ h5
     .active-post
         position: relative
         visibility: visible
-        transform: translateY(0px) scale(1)
+        transform: translateY(25px) scale(1)
         transition-delay: 80ms
         transition-duration: 180ms
         overflow: visible
@@ -193,27 +215,15 @@ h5
         visibility: visible
     .box-container
         display: none
-
-.video-container
-    position: relative;
-    padding-bottom: 56.25%
-    padding-top: 30px;
-    height: 0
-    overflow: hidden
-
-    iframe, object, embed
-        position: absolute
-        top: 0
-        left: 0
-        width: 100%
-        height: 100%
+    footer
+        color: #444 !important
 
 .index-container
     display: flex
     width: 100%
     max-width: 100%
     flex-flow: row wrap
-    margin: 100px auto 0
+    margin: 62px auto 0
 
 nav
     display: flex
@@ -240,20 +250,114 @@ nav
     text-decoration: none
     background: $tan
     width: 33%
-    height: 300px
+    height: 200px
     border: 12px solid $backgroundHome
+    transition: 200ms
+
+    .background-image
+        border-radius:2px
+        background-size: cover
+        background-color: white
+        height: 200px
+        background-repeat: no-repeat
+        background-position: top
+        box-shadow: -2px 8px 16px 1px #aaa
+        position:relative
+        display: flex
+        max-width: 66%
+        width: auto
+        margin: 25px 25px 0 25px
+        @media(max-width: 700px)
+            height: 125px
+            max-width: 100%
+
+    .thumbnail-buttons
+        height: 50px
+        width: 100%
+        display: flex
+        text-align: center
+        visibility: hidden
+        position: absolute
+        top: 375px
+        transform: translateY(25px);
+        transition: 25ms
+
+        button
+            display: block
+            text-align: center
+            text-transform: uppercase
+            width: 45%
+            max-width: 180px
+            cursor: pointer
+            margin-left: 25px
+            font-size: 13px
+            letter-spacing: 3px
+            font-family: $Ingra
+            font-weight: 700
+            outline: none
+
+            &:first-child
+                color: white
+                background: $backgroundHome
+                border: 2px solid white
+
+            &:last-child
+                border: 2px solid #111
+                background: white
+
+
 
     &:hover
         text-decoration: none
+        background: white
+        transition: 200ms
+        .thumbnail-buttons
+            visibility: visible
+            transition-delay: 75ms
+            transition-duration: 125ms
+            transform: translateY(0);
+            @media(max-width: 700px)
+                visibility: hidden
+        & > .box-title
+            transition: 200ms
+            position: relative
+        & > .box-desc
+            transition: 200ms
+            position: relative
+
 
     &:first-child
-        width: 59.01666%
-        height: 500px
+        width: 57.01666%
+
     &:nth-child(2)
-        width: 40.01666%
-        height: 500px
+        width: 42.01666%
+
+    &:first-child, &:nth-child(2)
+        height: 400px
+        @media(max-width: 700px)
+            height: 325px
+
     &:nth-child(6n)
         margin-right: 0
+
+    &:first-child, &:nth-child(2)
+        &:hover
+            transition: 200ms
+            .background-image
+                height: 125px
+                max-width: 40%
+                transition: 275ms
+            & > .box-title
+                transition: 200ms
+                position: relative
+                font-size: 30px
+            & > .box-desc
+                transition: 200ms
+                font-size: 18px
+                position: relative
+.box, .box:nth-child(n)
+    @media(max-width: 700px)
+        width: 100%
 
 .box-container
     display: flex
@@ -261,7 +365,7 @@ nav
     justify-content: center
     flex-flow: row wrap
     margin: auto
-    background: #262626
+    background: inherit
     height: 100%
     visibility: hidden
 
@@ -271,10 +375,14 @@ nav
 .box-title
     font-size: 24px
     margin-bottom: 0
+    margin-top: 37px
 
 .box-title, .box-desc
     padding-left: 25px
     padding-right: 25px
 
 .box-desc
-    margin-top: 12px
+    margin-top: 6px
+    max-height: 52px
+    overflow: hidden
+    position: relative

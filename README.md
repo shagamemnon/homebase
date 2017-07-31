@@ -1,15 +1,14 @@
 # HomeBase
 
-> A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without reloading the page. HomeBase has *no frontend library dependencies* besides jQuery & the Ghost Public API.
+> A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without reloading the page. HomeBase is compiled using Browserify but has *no frontend library dependencies* besides the Ghost Public API.
 
 
 ## Features
 
-* Media Carousel w/ support for images, videos & iframe. Automatically generated for all posts.
+* JS Media Carousel w/ support for images, videos & iframe. Automatically generated for all posts.
 * Responsive layout w/ flexbox
 * SEO-friendly URL structure
 * AMP support
-* 100/100 on Google's Page Speed test
 <!--<img src="https://github.com/shagamemnon/homebase/blob/master/assets/img/homebase-carousel-demo.gif?raw=true" style="width:100%;display:flex">-->
 
 ## Quick Start
@@ -25,9 +24,13 @@
 
 ### Media Carousel
 
-Every time a visitor opens a post or page, the  `Carousel` object clones every `img`, `video`, `figure` or `iframe` that was added via the Ghost admin panel. `Carousel` works with all media - including embedded videos (i.e. YouTube or Vimeo) and external image links. This feature was inspired by <a href="paper.dropbox.com">Dropbox Paper</a>.
+Every time a visitor clicks the thumbnail post or page, an Ajax request is made to the Ghost API. The request returns an HTML string that is copied by both the Layout and  `Carousel` object. The `Carousel` object parses the HTML response, looking for every `img`, `video`, `figure` or `iframe` that is a direct descendant of the parent selector, `.active-post-body`.
 
-`Carousel` is made visible when a visitor clicks on any media within the post (all `img,` `video,` `figure` and `iframe` tags have the `cursor: zoom-in` property to convey a clickable region to visitors).
+
+* `Carousel` was inspired by [Dropbox Paper](https://github.com/shagamemnon/homebase/blob/master/paper.dropbox.com) and works with all media - including embedded videos (i.e. YouTube or Vimeo) and external image links.
+* `Carousel` is made visible when a visitor clicks on any media within the post (all `img,` `video,` `figure` and `iframe` tags have the `cursor: zoom-in` property to convey a clickable region to visitors).
+
+### Settings
 
 To modify the Carousel's default behavior, insert this snippet after `functions.min.js` has loaded:
 
@@ -44,9 +47,7 @@ Carousel.options({
 ```
 
 
-### Settings
-
-### init
+#### init
 ```javascript
 init: '.MY_SELECTOR'
 ```
@@ -56,7 +57,7 @@ Initialize carousel using a specified selector or tag. Default behavior is to in
 ```javascript
 items: ['img', 'video', 'figure', 'iframe', '.carousel-item', '.MY_SELECTOR' ...]
 ```
-Modify parent tags and/or selectors to be included inside carousel.
+Modify list of parent tags and/or selectors that you want to include inside carousel.
 
 #### swipe
 ```javascript

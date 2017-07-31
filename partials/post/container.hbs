@@ -4,8 +4,10 @@
 <div data-navigate="right" class="arrow-right arrow"></div>
 <section class="active-post">
   <header class="active-post-header">
-    <h1 itemprop='headline'>{{title}}</h1>
-    <h5 class="{{{slug}}}">{{meta_description}}</h5>
+      <h1 itemprop='headline'>{{title}}</h1>
+      <h5 class="{{{slug}}}">{{meta_description}}</h5>
   </header>
-  <article class="active-post-body">{{content}}</article>
+  <article class="active-post-body {{{slug}}}">
+      {{content}} 
+  </article>
 </section>

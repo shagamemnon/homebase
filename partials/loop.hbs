@@ -27,7 +27,7 @@
           <h2 class="box-title">{{title}}</h2>
           <p class="box-desc">{{meta_description}}</p>
           <div class="thumbnail-buttons">
-              <button data-navigate='{{{url}}}' class="post-button">View Post</button>
+              <button data-navigate='{{{url}}}' class="post-button">View Project</button>
               <button data-navigate='{{{url}}}' class="gallery-button">View Gallery</button>
           </div>
       </a>
@@ -35,6 +35,9 @@
   <a href='{{{url}}}' class="box box-link">
       <h2 class="box-title">{{title}}</h2>
       <p class="box-desc">{{meta_description}}</p>
+      <div class="thumbnail-buttons">
+          <button data-navigate='{{{url}}}' class="black post-button">View Project</button>
+      </div>
   </a>
   {{/if}}{{/foreach}}
 </div>{{/get}}

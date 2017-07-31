@@ -7,15 +7,8 @@
     <meta name="description" content="{{meta_description}}">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      .box-container .box-link:nth-child(n+3) {
-          background-image: none !important
-      }
-    </style>
     <link rel="shortcut icon" href="{{asset 'img/favicon.ico'}}">
     <link rel="stylesheet" href="{{asset 'css/main.min.css'}}">
-    <script src="https://use.typekit.net/xlc5yjz.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script>
     <noscript>
       <style>
         .splash-screen {display: none !important}
@@ -32,6 +25,8 @@
       {{{body}}}
       {{> footer}}
     </main>{{> menu/contact}}
-    <script defer src="{{asset 'js/functions.min.js'}}"></script>
+    <script src="https://use.typekit.net/xlc5yjz.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <script async src="{{asset 'js/bundle.js'}}"></script>
   </body>
 </html>

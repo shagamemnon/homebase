@@ -1,11 +1,11 @@
 # HomeBase
 
-> A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without reloading the page. HomeBase is compiled using Browserify but has *no frontend library dependencies* besides the Ghost Public API.
+> A fast, AJAX-driven theme for Ghost that can be navigated end-to-end without reloading the page. HomeBase has *no frontend library dependencies* besides the Ghost Public API.
 
 
 ## Features
 
-* JS Media Carousel w/ support for images, videos & iframe. Automatically generated for all posts.
+* Media Carousel w/ support for images, videos & iframe. Automatically generated for all posts.
 * Responsive layout w/ flexbox
 * SEO-friendly URL structure
 * AMP support
@@ -24,7 +24,7 @@
 
 ### Media Carousel
 
-Every time a visitor clicks the thumbnail post or page, an Ajax request is made to the Ghost API. The request returns an HTML string that is copied by both the Layout and  `Carousel` object. The `Carousel` object parses the HTML response, looking for every `img`, `video`, `figure` or `iframe` that is a direct descendant of the parent selector, `.active-post-body`.
+Every time a visitor clicks the thumbnail post or page, an Ajax request is made to the Ghost API. The request returns an HTML string that is copied by both the Layout and  `Carousel` object. The `Carousel` object parses the HTML response, looking for every `img`, `video`, `figure` or `iframe` that is a direct descendant of the parent selector, `.active-post-body`. 
 
 
 * `Carousel` was inspired by [Dropbox Paper](https://github.com/shagamemnon/homebase/blob/master/paper.dropbox.com) and works with all media - including embedded videos (i.e. YouTube or Vimeo) and external image links.
